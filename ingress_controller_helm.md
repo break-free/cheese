@@ -28,3 +28,5 @@ helm install stable/nginx-ingress \
 ##You can watch the deployment with the following command
 
 kubectl --namespace default get services -o wide -w nginx-ingress-controller
+
+Once a public IP address gets populated to the Load Balancer, it should show up under `EXTERNAL-IP`. Point DNS of your domains here.
