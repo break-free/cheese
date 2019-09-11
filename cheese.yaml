@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: cheese
-        image: errm/cheese:stilton
+        image: coyoteacrprodregistry.azurecr.io/stilton
         resources:
           requests:
             cpu: 100m
@@ -54,7 +54,7 @@ spec:
     spec:
       containers:
       - name: cheese
-        image: errm/cheese:cheddar
+        image: coyoteacrprodregistry.azurecr.io/cheddar
         resources:
           requests:
             cpu: 100m
@@ -87,7 +87,7 @@ spec:
     spec:
       containers:
       - name: cheese
-        image: errm/cheese:wensleydale
+        image: coyoteacrprodregistry.azurecr.io/wensleydale
         resources:
           requests:
             cpu: 100m
