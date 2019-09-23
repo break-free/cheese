@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  cheddar:
+    build:
+      context: ./cheese_code/cheddar
+      dockerfile: Dockerfile
+    ports: 
+      - 8080:80
+  
+  stilton:
+    build:
+      context: ./cheese_code/stilton
+      dockerfile: Dockerfile
+    ports:
+      - 8081:80
+  
+  wensleydale:
+    build:
+      context: ./cheese_code/wensleydale
+      dockerfile: Dockerfile
+    ports:
+      - 8082:80
