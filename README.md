@@ -57,3 +57,8 @@ kubectl get svc
 ##Deploy ingress
 
 kubectl apply -f ingress.yaml
+
+##Troubleshooting:
+
+kubectl describe pods
+
