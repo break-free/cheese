@@ -7,19 +7,22 @@ See `install_helm.md`
 
 ##Static IP Deployment
 
+###Note that this does not seem to be working at the moment: https://github.com/helm/charts/issues/14668
+
 helm install stable/nginx-ingress \
-    --name nginx-ingress
+    --name nginx-ingress \
     --namespace kube-system \
     --set controller.stats.enabled=true \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set controller.service.loadBalancerIP="13.89.138.85"
+    --set controller.service.annotations.service\.beta\.kubernetes\.io/azure-load-balancer-resource-group=Coyote-AKS-TF-RG \
+    --set controller.service.loadBalancerIP="52.141.217.91"
 
 
 ##Dynamic/Ephemeral IP allocation
 
 helm install stable/nginx-ingress \
-    --name nginx-ingress
+    --name nginx-ingress \
     --namespace kube-system \
     --set controller.stats.enabled=true \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
