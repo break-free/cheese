@@ -15,4 +15,4 @@ The purpose of this repo is to provide an introduction to working with container
 
 ## A quick note some of the terminology we will be using:
 
-1.
+1. The 
