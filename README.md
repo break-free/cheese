@@ -1,64 +1,18 @@
-#NOTE! THIS DOCUMENTATION IS UNDER CONSTRUCTION
+# Cheese APP
+## An introduction to container workflows and Kubernetes Deployments
 
-#Building and Publishing Containers
+The purpose of this repo is to provide an introduction to working with containers, from local development to a deployment to Kubernetes.
 
-##Ensure you are using the correct subscription
+## This repo contains important components needed for local development and to deploy to Kubernetes:
 
-See Available subscriptions:
+1. The app code itself, which is contained within the `cheese_code` Directory. There are a total of three apps: `Cheddar`, `Stilton`, `Wensleydale`
+2. Instructions on how to build the applications, located within each app directory's `Dockerfile`
+3. Instructions to run the whole application locally, located in the `docker-compose` file
+4. Manifests to deploy both the application and it's required services:
+    * `ingress.yaml`: Instructions to the Kubernetes Cluster on how to route incoming traffic to the right service.
+    * `cheese.yaml`: Instructions to the Kubernetes Cluster on where to pull the built applications, their compute requirements, and how they are exposed within the cluster.
+    * `cheese_services.yaml`: Instructions on how to route incoming connections from the ingress to the right Kubernetes `Pods`.
 
-az account list --output table
+## A quick note some of the terminology we will be using:
 
-Set subscription:
-
-az account set -s \"<your-azure-account-name>\"
-
-##Get ACR login server
-
-az acr list --resource-group Coyote-AKS-TF-RG --query "[].{acrLoginServer:loginServer}" --output table
-
-##Login to the Registry, ommit the domain
-
-az acr login --name coyoteacrprodregistry
-
-##Build and Tag image
-
-Navigate to the root directory of the app, then run the following (mind the period at the end):
-
-`docker build -t coyoteacrprodregistry.azurecr.io/cheddar:v1 .`
-
-Where `coyoteacrprodregistry.azurecr.io` is the registry, `cheddar` is the container name, and `v1` is the version.
-
-##Publish Image to registry
-
-`docker push coyoteacrprodregistry.azurecr.io/cheddar:v1`
-
-##Do the same for the others
-
-Build the images:
-`docker build -t coyoteacrprodregistry.azurecr.io/stilton:v1 .`
-`docker build -t coyoteacrprodregistry.azurecr.io/wensleydale:v1 .`
-
-Then publish the images to the registry
-
-`docker push coyoteacrprodregistry.azurecr.io/stilton:v1`
-`docker push coyoteacrprodregistry.azurecr.io/wensleydale:v1`
-
-#Cluster Deployment
-
-##Install nginx
-helm install stable/nginx-ingress --name nginx-ingress --set controller.stats.enabled=true --namespace kube-system
-
-##Describes the Ingress Controller
-kubectl --namespace kube-system get services -o wide -w nginx-ingress-controller
-
-##Gets services
-kubectl get svc
-
-##Deploy ingress
-
-kubectl apply -f ingress.yaml
-
-##Troubleshooting:
-
-kubectl describe pods
-
+1. The 
