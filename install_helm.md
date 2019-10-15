@@ -14,13 +14,11 @@ The instructions depend on your OS. See https://helm.sh/docs/using_helm/#install
 
 ###Manual
 
-TBD
+curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.13.10/bin/windows/amd64/kubectl.exe
 
 ##Initialize Helm and Install Tiller
 
 ###First, ensure you have the correct kubectl context
-
-todo
 
 ###Run the following to install Helm and Tiller on the cluster
 
