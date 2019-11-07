@@ -19,7 +19,7 @@ metadata:
 spec:
   ports:
   - name: http
-    targetPort: 80
+    targetPort: 
     port: 80
   selector:
     app: cheese

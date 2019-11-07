@@ -4,24 +4,30 @@ metadata:
   name: cheese
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/whitelist-source-range: "162.247.248.249"
 spec:
   rules:
-  - host: stilton.cdanmar.com
+  - host: carlosstilton.cdanmar.com
     http:
       paths:
       - path: /
         backend:
           serviceName: stilton
           servicePort: http
-  - host: cheddar.cdanmar.com
+  - host: carloscheddar.cdanmar.com
     http:
       paths:
       - path: /
         backend:
           serviceName: cheddar
           servicePort: http
-  - host: wensleydale.cdanmar.com
+  - host: carloswensleydale.cdanmar.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: wensleydale
+          servicePort: http
+  - host: carloswensleydale.cdanmar.com
     http:
       paths:
       - path: /

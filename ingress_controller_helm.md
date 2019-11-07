@@ -21,9 +21,7 @@ helm install stable/nginx-ingress \
 
 ## Dynamic/Ephemeral IP allocation
 
-helm install stable/nginx-ingress \
-    --name nginx-ingress \
-    --namespace kube-system \
+helm install stable/nginx-ingress --name nginx-ingress --namespace kube-system \
     --set controller.stats.enabled=true \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
