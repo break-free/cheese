@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: cheese
-        image: breakfreeacrregistry.azurecr.io/stilton:v1
+        image: breakfreeacrregistry.azurecr.io/stilton:cheeseless
         resources:
           requests:
             cpu: 100m
