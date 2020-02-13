@@ -21,8 +21,7 @@ spec:
     spec:
       containers:
       - name: cheese
-        image: 146452989591.dkr.ecr.us-west-2.amazonaws.com/stilton:latest
-          # AKS - breakfreeacrregistry.azurecr.io/stilton:v1
+        image: breakfreeacrregistry.azurecr.io/stilton:v1
         resources:
           requests:
             cpu: 100m
@@ -55,8 +54,7 @@ spec:
     spec:
       containers:
       - name: cheese
-        image: 146452989591.dkr.ecr.us-west-2.amazonaws.com/cheddar:latest
-          #AKS - breakfreeacrregistry.azurecr.io/cheddar:v1
+        image: breakfreeacrregistry.azurecr.io/cheddar:v1
         resources:
           requests:
             cpu: 100m
@@ -89,8 +87,7 @@ spec:
     spec:
       containers:
       - name: cheese
-        image: 146452989591.dkr.ecr.us-west-2.amazonaws.com/wensleydale:latest
-          #AKS - breakfreeacrregistry.azurecr.io/wensleydale:v1
+        image: breakfreeacrregistry.azurecr.io/wensleydale:v1
         resources:
           requests:
             cpu: 100m

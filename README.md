@@ -11,6 +11,7 @@ The purpose of this repo is to provide an introduction to working with container
 4. Manifests to deploy both the application and it's required services:
     * `ingress.yaml`: Instructions to the Kubernetes Cluster on how to route incoming traffic to the right service.
     * `cheese.yaml`: Instructions to the Kubernetes Cluster on where to pull the built applications, their compute requirements, and how they are exposed within the cluster.
+      * note - `AKS` and `EKS` versions of `Cheese` differ in source container registry. They are otherwise same.
     * `cheese_services.yaml`: Instructions on how to route incoming connections from the ingress to the right Kubernetes `Pods`.
 
 ## A quick note some of the terminology we will be using:

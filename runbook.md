@@ -45,8 +45,6 @@ Alternatively, you can run aws commands with metaparameter `region` e.g. `aws ek
 
 `aws ecr get-login` generates a `docker login` command. Run the `docker login` command.
 
-### Build and Tag image
-
 # Dockerize your image
 * note - AKS and EKS have different default registry server URLs. They appear as such:
  * AKS - `<repo_name>.azurecr.io`
