@@ -1,64 +1,95 @@
-#NOTE! THIS DOCUMENTATION IS UNDER CONSTRUCTION
+# NOTE! THIS DOCUMENTATION IS UNDER CONSTRUCTION
 
-#Building and Publishing Containers
+# Pre-requisites for workstations
+* Install and configure cloud provider tools (e.g. Azure or AWS CLI)
+* Install Docker engine
+* Install and configure Kubectl (.kube/config)
+* Install Helm (K8 package manager)
 
-##Ensure you are using the correct subscription
+# Building and Publishing Containers
+
+## Azure
+### Ensure you are using the correct subscription
 
 See Available subscriptions:
 
-az account list --output table
+`az account list --output table`
 
 Set subscription:
 
-az account set -s \"<your-azure-account-name>\"
+`az account set -s \"<your-azure-account-name>\"`
 
-##Get ACR login server
+### Get ACR login server
 
-az acr list --resource-group Coyote-AKS-TF-RG --query "[].{acrLoginServer:loginServer}" --output table
+`az acr list --resource-group Coyote-AKS-TF-RG --query "[].{acrLoginServer:loginServer}" --output table`
 
-##Login to the Registry, ommit the domain
+### Login to the Registry, ommit the domain
 
-az acr login --name coyoteacrprodregistry
+`az acr login --name coyoteacrprodregistry`
 
-##Build and Tag image
+## AWS
+### Ensure you are in the correct region
+See current profile:
+
+`aws configure list`
+
+Set new profile: 
+
+`aws configure`
+
+Set multiple profile: see [AWS documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
+
+Alternatively, you can run aws commands with metaparameter `region` e.g. `aws eks list-clusters --region <region>`
+
+### Login to the Registry
+
+`aws ecr get-login` generates a `docker login` command. Run the `docker login` command.
+
+### Build and Tag image
+
+# Dockerize your image
+* note - AKS and EKS have different default registry server URLs. They appear as such:
+ * AKS - `<repo_name>.azurecr.io`
+ * EKS - `<aws_account_id>.dkr.ecr.<region>.amazonaws.com`
+## Build and Tag image
 
 Navigate to the root directory of the app, then run the following (mind the period at the end):
 
-`docker build -t coyoteacrprodregistry.azurecr.io/cheddar:v1 .`
+`docker build -t <registry_server>/cheddar:v1 .`
 
-Where `coyoteacrprodregistry.azurecr.io` is the registry, `cheddar` is the container name, and `v1` is the version.
+Where `cheddar` is the image name, and `v1` is the version.
 
-##Publish Image to registry
+## Publish Image to registry
 
-`docker push coyoteacrprodregistry.azurecr.io/cheddar:v1`
+`docker push <registry_server>/cheddar:v1`
 
-##Do the same for the others
+## Do the same for the others
 
 Build the images:
-`docker build -t coyoteacrprodregistry.azurecr.io/stilton:v1 .`
-`docker build -t coyoteacrprodregistry.azurecr.io/wensleydale:v1 .`
+`docker build -t <registry_server>/stilton:v1 .`
+`docker build -t <registry_server>/wensleydale:v1 .`
 
 Then publish the images to the registry
 
-`docker push coyoteacrprodregistry.azurecr.io/stilton:v1`
-`docker push coyoteacrprodregistry.azurecr.io/wensleydale:v1`
+`docker push <registry_server>/stilton:v1`
+`docker push <registry_server>/wensleydale:v1`
 
-#Cluster Deployment
+# Cluster Deployment
 
-##Install nginx
+## Install nginx
 helm install stable/nginx-ingress --name nginx-ingress --set controller.stats.enabled=true --namespace kube-system
 
-##Describes the Ingress Controller
+## Describes the Ingress Controller
 kubectl --namespace kube-system get services -o wide -w nginx-ingress-controller
 
-##Gets services
+## Gets services
 kubectl get svc
 
-##Deploy ingress
+## Deploy ingress
 
 kubectl apply -f ingress.yaml
 
-##Troubleshooting:
+## Troubleshooting:
 
 kubectl describe pods
 
