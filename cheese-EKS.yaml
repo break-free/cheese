@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: cheese
-        image: 146452989591.dkr.ecr.us-west-2.amazonaws.com/stilton:latest
+        image: gcr.io/carloslabs/stilton
         resources:
           requests:
             cpu: 100m
@@ -54,7 +54,7 @@ spec:
     spec:
       containers:
       - name: cheese
-        image: 146452989591.dkr.ecr.us-west-2.amazonaws.com/cheddar:latest
+        image: gcr.io/carloslabs/cheddar
         resources:
           requests:
             cpu: 100m
@@ -87,7 +87,7 @@ spec:
     spec:
       containers:
       - name: cheese
-        image: 146452989591.dkr.ecr.us-west-2.amazonaws.com/wensleydale:latest
+        image: gcr.io/carloslabs/wensleydale
         resources:
           requests:
             cpu: 100m
