@@ -9,37 +9,30 @@ metadata:
 spec:
   tls:
   - hosts:
-    - stilton.cdanmar.com
+    - stilton.barnprojects.com
     secretName: stilton-tls
   - hosts:
-    - cheddar.cdanmar.com
+    - cheddar.barnprojects.com
     secretName: cheddar-tls
   - hosts:
-    - wensleydale.cdanmar.com
+    - wensleydale.barnprojects.com
     secretName: wensleydale-tls
   rules:
-  - host: stilton.cdanmar.com
+  - host: stilton.barnprojects.com
     http:
       paths:
       - path: /
         backend:
           serviceName: stilton
           servicePort: http
-  - host: cheddar.cdanmar.com
+  - host: cheddar.barnprojects.com
     http:
       paths:
       - path: /
         backend:
           serviceName: cheddar
           servicePort: http
-  - host: wensleydale.cdanmar.com
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: wensleydale
-          servicePort: http
-  - host: wensleydale.cdanmar.com
+  - host: wensleydale.barnprojects.com
     http:
       paths:
       - path: /
