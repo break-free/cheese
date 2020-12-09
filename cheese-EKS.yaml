@@ -3,6 +3,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: stilton
+  namespace: cheese
   labels:
     app: cheese
     cheese: stilton
@@ -36,6 +37,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: cheddar
+  namespace: cheese
   labels:
     app: cheese
     cheese: cheddar
@@ -69,6 +71,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: wensleydale
+  namespace: cheese
   labels:
     app: cheese
     cheese: wensleydale
