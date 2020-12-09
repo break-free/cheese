@@ -11,13 +11,13 @@ spec:
   tls:
   - hosts:
     - stilton.barnprojects.com
-    secretName: stilton-tls
+    secretName: stilton-tls-tdwnk
   - hosts:
     - cheddar.barnprojects.com
-    secretName: cheddar-tls
+    secretName: cheddar-tls-d2zbg 
   - hosts:
     - wensleydale.barnprojects.com
-    secretName: wensleydale-tls
+    secretName: wensleydale-tls-7tfkz
   rules:
   - host: stilton.barnprojects.com
     http:
